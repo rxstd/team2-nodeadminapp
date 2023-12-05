@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login V3</title>
+    <title><%= title %> 페이지 로그인</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--===============================================================================================-->
@@ -70,32 +70,6 @@
       href="/external/login/css/main.css"
     />
     <!--===============================================================================================-->
-    <style>
-      .mainButton {
-        background: linear-gradient(to right bottom, #00c6ff, #0072ff);
-        /* Green */
-        border: none;
-        color: white;
-        padding: 12px;
-        width: calc(100% - 10px);
-
-        text-align: center;
-        text-decoration: none;
-        /* display: inline-block; */
-        font-size: 14px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 3px;
-        transition: 0.3s all;
-      }
-
-      .mainButton:hover {
-        opacity: 0.8;
-        transition: 0.3s all;
-        transform: scale(1.05);
-        filter: brightness(1.2);
-      }
-    </style>
   </head>
   <body>
     <div class="limiter">
@@ -118,46 +92,59 @@
               <!--i class="zmdi zmdi-landscape"></i-->
             </span>
 
-            <span
-              class="login100-form-title p-b-34 p-t-27"
-              style="font-size: 24px"
+            <span class="login100-form-title p-b-34 p-t-27">
+              <%= title %> 페이지 로그인</span
             >
-              <%= title %> 페이지에 오신것을 환영합니다.</span
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="아이디를 입력해 주세요."
             >
-            <table style="width: 100%">
-              <tr>
-                <td colspan="3">
-                  <a href="/login"
-                    ><button class="mainButton" type="button">
-                      로그인 하기
-                    </button></a
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="/evans">
-                    <button class="mainButton" type="button">
-                      추원혁의 소개
-                    </button>
-                  </a>
-                </td>
-                <td>
-                  <a href="/gown">
-                    <button class="mainButton" type="button">
-                      한고운의 소개
-                    </button>
-                  </a>
-                </td>
-                <td>
-                  <a href="/welcome">
-                    <button class="mainButton" type="button">
-                      이환영의 소개
-                    </button>
-                  </a>
-                </td>
-              </tr>
-            </table>
+              <input
+                class="input100"
+                type="text"
+                name="username"
+                placeholder="아이디"
+              />
+              <span class="focus-input100" data-placeholder="&#xf207;"></span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="비밀번호를 입력해 주세요."
+            >
+              <input
+                class="input100"
+                type="password"
+                name="pass"
+                placeholder="비밀번호"
+              />
+              <span class="focus-input100" data-placeholder="&#xf191;"></span>
+            </div>
+
+            <div class="contact100-form-checkbox">
+              <input
+                class="input-checkbox100"
+                id="ckb1"
+                type="checkbox"
+                name="remember-me"
+              />
+              <label class="label-checkbox100" for="ckb1"> 자동 로그인 </label>
+            </div>
+
+            <% if (error) { %>
+            <p class="txt1" style="text-align: center; margin-bottom: 10px">
+              <%= error %>
+            </p>
+            <% } %>
+            <div class="container-login100-form-btn">
+              <button class="login100-form-btn">Login</button>
+            </div>
+
+            <div class="text-center p-t-90" style="color: white">
+              오름캠프 실습데이터.<br />아이디 : ormcamp / 비밀번호 :
+              demo1234<br />위 계정으로 로그인 가능.
+            </div>
           </form>
         </div>
       </div>
