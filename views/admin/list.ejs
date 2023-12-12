@@ -1,0 +1,161 @@
+<%-include('../components/header.ejs') %>
+
+<!-- Page Content  -->
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="iq-card">
+          <div class="iq-card-header d-flex justify-content-between">
+            <div class="iq-header-title">
+              <h4 class="card-title">User List</h4>
+            </div>
+          </div>
+          <div class="iq-card-body">
+            <div class="table-responsive" style="overflow: hidden">
+              <div class="row justify-content-between">
+                <div class="col-sm-12 col-md-6">
+                  <div id="user_list_datatable_info" class="dataTables_filter">
+                    <form class="mr-3 position-relative">
+                      <div class="form-group mb-0">
+                        <input
+                          type="search"
+                          class="form-control"
+                          id="exampleInputSearch"
+                          placeholder="Search"
+                          aria-controls="user-list-table"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="user-list-files d-flex float-right">
+                    <a class="iq-bg-primary" href="javascript:void();">
+                      Print
+                    </a>
+                    <a class="iq-bg-primary" href="javascript:void();">
+                      Excel
+                    </a>
+                    <a class="iq-bg-primary" href="javascript:void();"> Pdf </a>
+                  </div>
+                </div>
+              </div>
+              <table
+                id="user-list-table"
+                class="table table-striped table-borderless mt-4"
+                role="grid"
+                aria-describedby="user-list-page-info"
+              >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>관리자명</th>
+                    <th>소속회사 코드</th>
+                    <th>부서명</th>
+                    <th>전화번호</th>
+                    <th>이메일</th>
+                    <th>상태</th>
+                    <th>생성일시</th>
+                    <th>작업</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (var i = 0; i < adminList.length; i++) { %>
+                  <tr>
+                    <td class="text-center">
+                      <img
+                        class="rounded-circle img-fluid avatar-40"
+                        src="/images/user/1.jpg"
+                        alt="profile"
+                      />
+                    </td>
+                    <td><%= adminList[i].admin_name %></td>
+                    <td><%= adminList[i].company_code %></td>
+                    <td><%= adminList[i].dept_name %></td>
+                    <td><%= adminList[i].telephone %></td>
+                    <td><%= adminList[i].email %></td>
+                    <td>
+                      <% if (adminList[i].used_yn_code == 'Y') { %>
+                      <span class="badge dark-icon-light iq-bg-primary"
+                        >Active</span
+                      >
+                      <% } else { %>
+                      <span class="badge iq-bg-danger">Inactive</span>
+                      <% } %>
+                    </td>
+                    <td><%= adminList[i].reg_date %></td>
+                    <td>
+                      <div class="flex align-items-center list-user-action">
+                        <a
+                          class="iq-bg-primary"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          data-original-title="Edit"
+                          href="/admin/modify?admin_id=<%= adminList[i].admin_id %>"
+                          ><i class="ri-pencil-line"></i
+                        ></a>
+                        <a
+                          class="iq-bg-primary"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          data-original-title="Delete"
+                          href="#"
+                          onclick="deleteAdmin('<%= adminList[i].admin_member_id %>')"
+                          ><i class="ri-delete-bin-line"></i
+                        ></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+            <script>
+              function deleteAdmin(admin_id) {
+                if (confirm("관리자 계정을 삭제하시겠습니까?")) {
+                  location.href = "/admin/delete?admin_id=" + admin_id;
+                }
+              }
+            </script>
+            <div class="row justify-content-between mt-3">
+              <div id="user-list-page-info" class="col-md-6">
+                <span>Showing 1 to 5 of 5 entries</span>
+              </div>
+              <div class="col-md-6">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item disabled">
+                      <a
+                        class="page-link"
+                        href="#"
+                        tabindex="-1"
+                        aria-disabled="true"
+                        >Previous</a
+                      >
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../components/footer.ejs') %>

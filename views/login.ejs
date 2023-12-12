@@ -1,172 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= title %> 페이지 로그인</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--===============================================================================================-->
-    <link
-      rel="icon"
-      type="image/png"
-      href="/external/login/images/icons/favicon.ico"
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/vendor/bootstrap/css/bootstrap.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/fonts/iconic/css/material-design-iconic-font.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/vendor/animate/animate.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/vendor/css-hamburgers/hamburgers.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/vendor/animsition/css/animsition.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/vendor/select2/select2.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/vendor/daterangepicker/daterangepicker.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/css/util.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/external/login/css/main.css"
-    />
-    <!--===============================================================================================-->
+    <title><%=title%> - 로그인</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="css/typography.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css" />
   </head>
   <body>
-    <div class="limiter">
-      <div
-        class="container-login100"
-        style="background-image: url('/images/icon.png')"
-      >
-        <div class="wrap-login100">
-          <form
-            class="login100-form validate-form"
-            method="POST"
-            action="/login"
-          >
-            <span class="login100-form-logo">
-              <img
-                class="login-icon-image"
-                src="/images/icon.png"
-                style="width: 120px; height: 120px"
-              />
-              <!--i class="zmdi zmdi-landscape"></i-->
-            </span>
-
-            <span class="login100-form-title p-b-34 p-t-27">
-              <%= title %> 페이지 로그인</span
-            >
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="아이디를 입력해 주세요."
-            >
-              <input
-                class="input100"
-                type="text"
-                name="username"
-                placeholder="아이디"
-              />
-              <span class="focus-input100" data-placeholder="&#xf207;"></span>
+    <!-- loader Start -->
+    <div id="loading">
+      <div id="loading-center"></div>
+    </div>
+    <!-- loader END -->
+    <!-- Sign in Start -->
+    <section class="sign-in-page">
+      <div class="container bg-white mt-0 p-0">
+        <div class="row no-gutters">
+          <div class="col-sm-6 align-self-center">
+            <div class="sign-in-from">
+              <h1 class="mb-0 dark-signin">로그인</h1>
+              <p>
+                관리자 계정을 입력하여 로그인하십시오.<br />아이디 : admin1 /
+                비밀번호 : 1234 로 로그인할 수 있습니다
+              </p>
+              <form class="mt-4" action="/login" method="post">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">관리자 계정명</label>
+                  <input
+                    type="text"
+                    name="admin_username"
+                    class="form-control mb-0"
+                    id="exampleInputEmail1"
+                    placeholder="관리자 ID를 입력하십시오."
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">비밀번호</label>
+                  <input
+                    type="password"
+                    name="admin_password"
+                    class="form-control mb-0"
+                    id="exampleInputPassword1"
+                    placeholder="관리자 비밀번호를 입력하십시오."
+                  />
+                </div>
+                <div class="d-inline-block w-100">
+                  <button type="submit" class="btn btn-primary float-right">
+                    로그인
+                  </button>
+                </div>
+                <div class="sign-info">
+                  <span class="dark-color d-inline-block line-height-2"
+                    >로그인에 문제가 있습니까?
+                    <a href="#">관리자에게 문의하십시오.</a></span
+                  >
+                </div>
+              </form>
             </div>
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="비밀번호를 입력해 주세요."
-            >
-              <input
-                class="input100"
-                type="password"
-                name="pass"
-                placeholder="비밀번호"
-              />
-              <span class="focus-input100" data-placeholder="&#xf191;"></span>
+          </div>
+          <div class="col-sm-6 text-center">
+            <div class="sign-in-detail text-white">
+              <a class="sign-in-logo mb-5" href="#"
+                ><img src="images/logo-white.png" class="img-fluid" alt="logo"
+              /></a>
+              <div
+                class="slick-slider11"
+                data-autoplay="true"
+                data-loop="true"
+                data-nav="false"
+                data-dots="true"
+                data-items="1"
+                data-items-laptop="1"
+                data-items-tab="1"
+                data-items-mobile="1"
+                data-items-mobile-sm="1"
+                data-margin="0"
+              >
+                <div class="item">
+                  <img
+                    src="images/login/1.png"
+                    class="img-fluid mb-4"
+                    alt="logo"
+                  />
+                  <h4 class="mb-1 text-white">모두의 연구소</h4>
+                  <p>
+                    모두의연구소에서 제공하는 다양한 서비스를 이용하실 수
+                    있습니다.
+                  </p>
+                </div>
+                <div class="item">
+                  <img
+                    src="images/login/1.png"
+                    class="img-fluid mb-4"
+                    alt="logo"
+                  />
+                  <h4 class="mb-1 text-white">AIFFEL</h4>
+                  <p>네.. 뭐라 적을 말이 없네요.</p>
+                </div>
+                <div class="item">
+                  <img
+                    src="images/login/1.png"
+                    class="img-fluid mb-4"
+                    alt="logo"
+                  />
+                  <h4 class="mb-1 text-white">ㅋㅋ</h4>
+                  <p>진짜 쓸 말이 없습니다. 여기 들어갈 문구 추천해주세요</p>
+                </div>
+              </div>
             </div>
-
-            <div class="contact100-form-checkbox">
-              <input
-                class="input-checkbox100"
-                id="ckb1"
-                type="checkbox"
-                name="remember-me"
-              />
-              <label class="label-checkbox100" for="ckb1"> 자동 로그인 </label>
-            </div>
-
-            <% if (error) { %>
-            <p class="txt1" style="text-align: center; margin-bottom: 10px">
-              <%= error %>
-            </p>
-            <% } %>
-            <div class="container-login100-form-btn">
-              <button class="login100-form-btn">Login</button>
-            </div>
-
-            <div class="text-center p-t-90" style="color: white">
-              오름캠프 실습데이터.<br />아이디 : ormcamp / 비밀번호 :
-              demo1234<br />위 계정으로 로그인 가능.
-            </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div id="dropDownSelect1"></div>
-
-    <!--===============================================================================================-->
-    <script src="/external/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/external/login/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/external/login/vendor/bootstrap/js/popper.js"></script>
-    <script src="/external/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/external/login/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/external/login/vendor/daterangepicker/moment.min.js"></script>
-    <script src="/external/login/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="/external/login/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="/external/login/js/main.js"></script>
+    </section>
+    <!-- Sign in END -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Appear JavaScript -->
+    <script src="js/jquery.appear.js"></script>
+    <!-- Countdown JavaScript -->
+    <script src="js/countdown.min.js"></script>
+    <!-- Counterup JavaScript -->
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Wow JavaScript -->
+    <script src="js/wow.min.js"></script>
+    <!-- Apexcharts JavaScript -->
+    <script src="js/apexcharts.js"></script>
+    <!-- Slick JavaScript -->
+    <script src="js/slick.min.js"></script>
+    <!-- Select2 JavaScript -->
+    <script src="js/select2.min.js"></script>
+    <!-- Owl Carousel JavaScript -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- Magnific Popup JavaScript -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Smooth Scrollbar JavaScript -->
+    <script src="js/smooth-scrollbar.js"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="js/chart-custom.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/custom.js"></script>
   </body>
 </html>

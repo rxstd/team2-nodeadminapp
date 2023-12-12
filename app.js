@@ -18,9 +18,21 @@ var articleRouter = require("./routes/article"); // 작업자 - 한고운
 var channelRouter = require("./routes/channel"); // 작업자 - 이환영
 var messageRouter = require("./routes/message"); // 작업자 - 이환영
 
-// 2023 - 12 - 12 Admin Webpage Integration End
+const session = require("express-session"); //added packeages to use req.session variables
 
-var app = express();
+var app = express(); //express run
+
+app.use(
+  //added to use req.session variables
+  session({
+    secret: "ormcamp",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Note: In production, set this to true and use HTTPS
+  })
+);
+
+// 2023 - 12 - 12 Admin Webpage Integration End
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

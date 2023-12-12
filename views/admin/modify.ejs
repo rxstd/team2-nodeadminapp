@@ -1,0 +1,165 @@
+<%-include('../components/header.ejs') %>
+
+<!-- Page Content  -->
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="iq-edit-list-data">
+          <div class="tab-content">
+            <div
+              class="tab-pane fade active show"
+              id="personal-information"
+              role="tabpanel"
+            >
+              <div class="iq-card">
+                <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                    <h4 class="card-title">관리자 계정 정보 수정</h4>
+                  </div>
+                </div>
+                <div class="iq-card-body">
+                  <form action="/admin/modify" method="POST">
+                    <div class="form-group row align-items-center">
+                      <div class="col-md-12">
+                        <div class="profile-img-edit">
+                          <img
+                            class="profile-pic"
+                            src="/images/user/11.png"
+                            alt="profile-pic"
+                          />
+                          <div class="p-image">
+                            <i class="ri-pencil-line upload-button"></i>
+                            <input
+                              class="file-upload"
+                              type="file"
+                              accept="image/*"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row align-items-center">
+                      <div class="form-group col-sm-6">
+                        <label for="admin_member_id">고유 관리자 IDX</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="admin_member_id"
+                          value="<%=adminInfo.admin_member_id%>"
+                          name="admin_member_id"
+                          readonly
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="admin_id">관리자 ID</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="admin_id"
+                          value="<%=adminInfo.admin_id%>"
+                          readonly
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="uname">관리자 이름</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="uname"
+                          value="<%=adminInfo.admin_name%>"
+                          name="admin_name"
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="cname">부서명</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cname"
+                          value="<%=adminInfo.dept_name%>"
+                          name="dept_name"
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="pwd1">비밀번호 변경 재입력</label>
+                        <input
+                          class="form-control"
+                          type="password"
+                          name="pwd1"
+                          id="pwd1"
+                          value=""
+                          placeholder="비밀번호 변경시에만 입력, 미변경시 공란"
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="pwd2">비밀번호 변경 재입력</label>
+                        <input
+                          class="form-control"
+                          type="password"
+                          name="pwd2"
+                          id="pwd2"
+                          value=""
+                          placeholder="비밀번호 변경시에만 입력, 미변경시 공란"
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label>계정 상태</label>
+                        <select
+                          class="form-control"
+                          id="exampleFormControlSelect1"
+                          name="used_yn_code"
+                        >
+                          <option value="Y" <% if (adminInfo.used_yn_code == 'Y') { %> selected <% } %>>사용</option>
+                          <option value="N" <% if (adminInfo.used_yn_code == 'N') { %> selected <% } %>>미사용</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label>이메일</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          value="<%=adminInfo.email%>"
+                          name="email"
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label>전화번호</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="phone"
+                          value="<%=adminInfo.telephone%>"
+                          name="telephone"
+                        />
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label>생성일시</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="created_at"
+                          value="<%=adminInfo.reg_date%>"
+                          readonly
+                        />
+                      </div>
+                    </div>
+                    <button type="button" class="btn iq-bg-danger" onclick="location.href='/admin/list';">
+                      돌아가기
+                    </button>
+                    <button type="submit" class="btn btn-primary mr-2" onsubmit="return false;" onclick="modifyAdminInfo();">
+                      저장
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../components/footer.ejs') %>
