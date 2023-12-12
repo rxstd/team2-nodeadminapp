@@ -9,6 +9,17 @@ var gownRouter = require("./routes/gown");
 var evansRouter = require("./routes/evans");
 var welcomeRouter = require("./routes/welcome");
 
+// 2023 - 12 - 12 Admin Webpage Integration Start
+var adminRouter = require("./routes/admin"); // 작업자 - 추원혁
+
+var memberRouter = require("./routes/member"); // 작업자 - 한고운
+var articleRouter = require("./routes/article"); // 작업자 - 한고운
+
+var channelRouter = require("./routes/channel"); // 작업자 - 이환영
+var messageRouter = require("./routes/message"); // 작업자 - 이환영
+
+// 2023 - 12 - 12 Admin Webpage Integration End
+
 var app = express();
 
 // view engine setup
@@ -26,6 +37,18 @@ app.use("/", indexRouter);
 app.use("/welcome", welcomeRouter);
 app.use("/gown", gownRouter);
 app.use("/evans", evansRouter);
+
+// 2023 - 12 - 12 Admin Webpage Integration Start
+
+app.use("/admin", adminRouter); // 작업자 - 추원혁
+
+app.use("/member", memberRouter); // 작업자 - 한고운
+app.use("/article", articleRouter); // 작업자 - 한고운
+
+app.use("/channel", channelRouter); // 작업자 - 이환영
+app.use("/message", messageRouter); // 작업자 - 이환영
+
+// 2023 - 12 - 12 Admin Webpage Integration End
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
