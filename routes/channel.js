@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-
 router.get('/list',async(req,res)=>{
     res.render('channel/list')
 })
-
 router.get('/create',async(req,res)=>{
     res.render('channel/create')
 }),
