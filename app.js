@@ -17,7 +17,7 @@ var articleRouter = require("./routes/article"); // 작업자 - 한고운
 
 var channelRouter = require("./routes/channel"); // 작업자 - 이환영
 var messageRouter = require("./routes/message"); // 작업자 - 이환영
-
+var expressLayouts = require('express-ejs-layouts');
 const session = require("express-session"); //added packeages to use req.session variables
 
 var app = express(); //express run
@@ -43,6 +43,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.set('layout', 'layout');
+app.set("layout extractScripts", true);
+app.set("layout extractStyles", true);
+app.set("layout extractMetas", true);
+app.use(expressLayouts); 
 
 app.use("/", indexRouter);
 
