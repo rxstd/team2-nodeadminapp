@@ -1,46 +1,53 @@
-
-
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-//채팅 이력 리스트
-router.get('/list',async(req,res)=>{
-    res.render('message/list')
-})
-//신규 채팅 이력 생성
-router.get('/create',async(req,res)=>{
-    res.render('message/create')
-}),
+/* 
+-routes\message.js - 채팅 메시지 이력 정보관리 라우팅 기능 제공
+ㄴrouter.get('/list'),views\message\list.ejs
+ㄴrouter.get('/create'),views\message\create.ejs
+ㄴrouter.post('/create'),목록페이지 이동처리 
+ㄴrouter.get('/modify'),views\message\modify.ejs
+ㄴrouter.post('/modify'),목록페이지 이동처리
+ㄴrouter.get('/delete'),목록페이지 이동처리
+*/
+router.get("/", function (req, res, next) {
+  res.render("message/dashboard");
+});
 
-router.post('/create',async(req,res)=>{
-    let userId = req.body.userId
-    let userPassword= req.body.userPassword
-    var member={
-        userId,
-        userPassword,
-    }
-    res.redirect('/message/list')
-})
-//채팅 이력 수정 
-router.get('/modify',async(req,res)=>{
-    res.render('message/modify')
-})
+router.get("/list", function (req, res, next) {
+  res.render("message/list", {
+    schOption: { title: "", isDisplay: "", boardTypeCode: "" },
+  });
+});
 
+router.post("/list", function (req, res, next) {
+  res.render("message/list", {
+    schOption: {
+      title: req.body.boardTypeCode,
+      isDisplay: req.body.title,
+      boardTypeCode: req.body.isDisplay,
+    },
+  });
+});
 
-router.post('/modify',async(req,res)=>{
-    let userId = req.body.userId
-    let userPassword= req.body.userPassword
-    var member={
-        userId,
-        userPassword,
-    }
-    res.redirect('/message/list')
-})
+router.get("/create", function (req, res, next) {
+  res.render("message/create");
+});
 
-router.get('/delete',async(req,res)=>{
-    res.redirect('/message/list')
-})
+router.post("/create", function (req, res, next) {
+  res.redirect("/message/list");
+});
 
+router.get("/modify", function (req, res, next) {
+  res.render("message/modify");
+});
 
+router.post("/modify", function (req, res, next) {
+  res.redirect("/message/list");
+});
+
+router.get("/delete", function (req, res, next) {
+  res.redirect("/message/list");
+});
 
 module.exports = router;
