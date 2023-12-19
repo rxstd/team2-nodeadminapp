@@ -18,7 +18,7 @@ router.get("/login", function (req, res, next) {
 });
 
 router.post("/login", function (req, res, next) {
-  res.redirect("/admin");
+  res.redirect("/dashboard");
 });
 
 router.get("/dashboard", function (req, res, next) {
