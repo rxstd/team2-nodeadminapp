@@ -1,16 +1,74 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 신규 목록 페이지</title>
-</head>
-<body>
-    <h1>게시글 신규 목록 페이지</h1>
+<form action="create" method="post" id="articleForm">
+  <div class="ibox-content m-b-sm border-bottom">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label">게시판 타입</label>
+          <select name="boardTypeCode" id="boardTypeCode" class="form-control">
+            <option value="">:: 선택하세요 ::</option>
+            <option value="1">공지게시판</option>
+            <option value="2">기술블로깅</option>
+            <option value="3">자유게시판</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label">글 제목</label>
+          <input type="text" class="form-control" name="title" id="title" />
+        </div>
+      </div>
+    </div>
 
-    <form action="/article/create" method="post">
-        <input type="submit" value="저장" />
-    </form>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label">글 내용</label>
+          <textarea
+            class="form-control"
+            rows="10"
+            cols="5"
+            name="content"
+            id="content"
+          ></textarea>
+        </div>
+      </div>
+    </div>
 
-</body>
-</html>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label">게시글유형</label>
+          <input
+            type="text"
+            class="form-control"
+            name="articleTypeCode"
+            id="articleTypeCode"
+          />
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label">게시여부</label>
+          <select name="isDisplay" id="isDisplay" class="form-control">
+            <option value="">:: 선택하세요 ::</option>
+            <option value="1">Y</option>
+            <option value="0">N</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label">작성자명</label>
+          <input type="text" class="form-control" name="writer" id="writer" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">저장</button>
+    <a href="list" class="btn btn-info">목록</a>
+  </div>
+</form>
