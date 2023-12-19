@@ -44,21 +44,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// 2023 - 12 - 19 express-ejs-layouts define start
 app.use("/", indexRouter);
 
-app.use("/welcome", welcomeRouter);
-app.use("/gown", gownRouter);
-app.use("/evans", evansRouter);
+app.use(layout);
+app.set("layout", "layout");
+app.set("layout extractScripts", true);
+// 2023 - 12 - 19 express-ejs-layouts define end
+
+// app.use("/welcome", welcomeRouter);
+// app.use("/gown", gownRouter);
+// app.use("/evans", evansRouter);
 
 // 2023 - 12 - 12 Admin Webpage Integration Start
 
-app.use("/admin", adminRouter); // 작업자 - 추원혁
-
-app.use("/member", memberRouter); // 작업자 - 한고운
-app.use("/article", articleRouter); // 작업자 - 한고운
-
-app.use("/channel", channelRouter); // 작업자 - 이환영
-app.use("/message", messageRouter); // 작업자 - 이환영
+app.use("/admin", adminRouter); // 1차 작업자 - 추원혁 // 2차 작업자 - 이환영
+app.use("/member", memberRouter); // 1차 작업자 - 한고운 // 2차 작업자 - 한고운
+app.use("/article", articleRouter); // 1차 작업자 - 한고운 // 2차 작업자 - 추원혁
+app.use("/channel", channelRouter); // 1차 작업자 - 이환영 // 2차 작업자 - 추원혁
+app.use("/message", messageRouter); // 1차 작업자 - 이환영 // 2차 작업자 - 추원혁
 
 // 2023 - 12 - 12 Admin Webpage Integration End
 
