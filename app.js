@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var layout = require("express-ejs-layouts"); // 2023 - 12 - 19 express-ejs-layouts define
-
+var sequelize = require('./models/index.js').sequelize;
 var indexRouter = require("./routes/index");
 var gownRouter = require("./routes/gown");
 var evansRouter = require("./routes/evans");
@@ -22,7 +22,7 @@ var expressLayouts = require("express-ejs-layouts");
 const session = require("express-session"); //added packeages to use req.session variables
 
 var app = express(); //express run
-
+sequelize.sync();
 app.use(
   //added to use req.session variables
   session({
