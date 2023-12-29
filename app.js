@@ -16,7 +16,6 @@ sequelize
   .catch((err) => {
     console.error(err);
   });
-
 var indexRouter = require("./routes/index");
 var gownRouter = require("./routes/gown");
 var evansRouter = require("./routes/evans");
@@ -34,7 +33,7 @@ var expressLayouts = require("express-ejs-layouts");
 const session = require("express-session"); //added packeages to use req.session variables
 
 var app = express(); //express run
-
+sequelize.sync();
 app.use(
   //added to use req.session variables
   session({
