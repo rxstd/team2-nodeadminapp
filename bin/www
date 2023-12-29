@@ -13,7 +13,9 @@ var dotenv = require("dotenv");
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.BACKEND_RUNNING_PORT || "3001");
+dotenv.config();
+
+var port = normalizePort(process.env.BACKEND_RUNNING_PORT || "3000");
 //var port = normalizePort(process.env.PORT || '3000');
 app.set("port", port);
 
