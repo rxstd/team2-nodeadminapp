@@ -5,6 +5,18 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var layout = require("express-ejs-layouts"); // 2023 - 12 - 19 express-ejs-layouts define
 
+var sequelize = require("./models/index").sequelize;
+
+// DB연결
+sequelize
+  .sync()
+  .then(() => {
+    console.log("DB 연결 성공");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 var indexRouter = require("./routes/index");
 var gownRouter = require("./routes/gown");
 var evansRouter = require("./routes/evans");
