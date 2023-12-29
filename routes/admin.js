@@ -11,12 +11,12 @@ res.render('admin/list',{admin})
 
 //
 router.get('/create',async(req,res)=>{
-    res.render('admin/create',{admin});
+    res.render('admin/create');
     
 }),
 //목록페이지 이동처리
 router.post('/create',async(req,res)=>{
-    
+    var admin_member_id= req.body.admin_member_id
     var admin_id = req.body.admin_id
     var admin_password= req.body.admin_password
     var company_code= req.body.company_code
@@ -26,6 +26,7 @@ router.post('/create',async(req,res)=>{
     var dept_name = req.body.dept_name
     
     var admin={
+        admin_member_id,
         admin_id,
         admin_password,
         company_code,
@@ -43,6 +44,9 @@ router.post('/create',async(req,res)=>{
 })
 
 router.get('/delete',async(req,res)=>{
+    var adminId = req.query.aid
+    await db.Admin.destroy({where:{admin_member_id:adminId}
+    })
     res.redirect('/admin/list')
 })
 
@@ -50,7 +54,7 @@ router.get('/delete',async(req,res)=>{
 router.get('/modify/:mid',async(req,res)=>{
     var adminIdx= req.params.mid
     let admin= await db.Admin.findOne({
-        where:{admin_id:adminIdx}
+        where:{admin_member_id:adminIdx}
     });
     res.render('admin/modify',{admin})
     
@@ -79,7 +83,7 @@ router.post('/modify/:mid',async(req,res)=>{
         reg_date:Date.now()
     }
     await db.Admin.update(updatedadmin,{
-        where:{admin_id:adminIdx}
+        where:{admin_member_id:adminIdx}
     })
     res.redirect('/admin/list')
 })
